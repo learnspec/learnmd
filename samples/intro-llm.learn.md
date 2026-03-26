@@ -118,12 +118,10 @@ Au-delà de cette limite, le modèle "oublie" ce qui est en dehors.
 
 ## Exercice
 
-```exercise hint:"Pensez à la définition du pré-entraînement"
 Pourquoi un LLM peut-il parfois générer des informations fausses présentées avec confiance (hallucinations) ?
 
-**Solution:**
-Parce qu'un LLM est entraîné à **maximiser la probabilité du token suivant**, pas à vérifier la vérité factuelle. Il génère le token statistiquement le plus plausible dans le contexte donné — ce qui peut produire des affirmations convaincantes mais incorrectes, surtout sur des sujets rares ou mal représentés dans ses données d'entraînement.
-```
+> [!tip]
+> Parce qu'un LLM est entraîné à **maximiser la probabilité du token suivant**, pas à vérifier la vérité factuelle. Il génère le token statistiquement le plus plausible dans le contexte donné — ce qui peut produire des affirmations convaincantes mais incorrectes, surtout sur des sujets rares ou mal représentés dans ses données d'entraînement.
 
 ---
 
