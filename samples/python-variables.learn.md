@@ -113,4 +113,4 @@ print(type(age))   # → <class 'int'>
 
 *Pour aller plus loin, testez vos connaissances avec le quiz complet :*
 
-!quiz ./check-python-variables.quiz.md
+!import ./check-python-variables.quiz.md
