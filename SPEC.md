@@ -149,14 +149,14 @@ Embeds a **single question** using QuizMD syntax directly in the lesson. All Qui
 
 **Syntax:**
 
-````markdown
+`````markdown
 ```quiz
 ? What operator assigns a value in Python?
 - [x] =
 - [ ] ==
 - [ ] :=
 ```
-````
+`````
 
 The question starts with `?` followed by the question text. Answer choices use `- [x]` (correct) and `- [ ]` (incorrect), identical to QuizMD Level 0.
 
@@ -187,7 +187,7 @@ The question starts with `?` followed by the question text. Answer choices use `
 
 A worked example with an optional title. Content is rendered with syntax highlighting.
 
-````markdown
+`````markdown
 ```example title="Assigning and reassigning a variable"
 # First assignment
 score = 0
@@ -197,7 +197,7 @@ print(score)   # → 0
 score = 42
 print(score)   # → 42
 ```
-````
+`````
 
 Supported attribute: `title:"..."` — title displayed as the block header.
 
@@ -205,14 +205,14 @@ Supported attribute: `title:"..."` — title displayed as the block header.
 
 A summary or key-takeaways block, typically placed at the end of a lesson or module.
 
-````markdown
+`````markdown
 ```summary
 - A variable associates a name with a value
 - Python does not require type declarations
 - Names are case-sensitive: `Age` ≠ `age`
 - Use `type()` to inspect the type of any object
 ```
-````
+`````
 
 ### Composition directives
 
@@ -316,7 +316,7 @@ Strict mode is recommended for CI pipelines and production publishing. Lenient m
 
 ## Complete example — single-file path
 
-````markdown
+`````markdown
 ---
 title: Introduction to Python
 lang: en
@@ -388,7 +388,7 @@ print(type("hello"))  # <class 'str'>
 !import ./03-conditions.learn.md
 
 !quiz ./check-conditions.quiz.md
-````
+`````
 
 ---
 
