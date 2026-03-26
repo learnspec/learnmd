@@ -420,13 +420,3 @@ The neuroneo.md MCP server exposes LearnMD to compatible AI assistants.
 | `validate_learn` | `content: string`, `strict?: bool` | List of errors and warnings |
 | `upload_learn` | `content, api_key, title` | Hosted lesson URL on neuroneo.md |
 
----
-
-## References
-
-- [QuizMD](https://github.com/neuroneo-md/quizmd) — companion format for assessments
-- [neuroneo.md](https://www.neuroneo.md) — reference implementation and community platform
-- [MDX](https://mdxjs.com/) — Markdown with React components
-- [CommonMark callouts](https://github.com/orgs/community/discussions/16925) — `> [!note]` GitHub syntax
-- [Anki](https://apps.ankiweb.net/) — spaced repetition (SM-2 algorithm)
-- [KaTeX](https://katex.org/) — fast LaTeX math rendering
