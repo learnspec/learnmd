@@ -136,4 +136,4 @@ Pourquoi un LLM peut-il parfois générer des informations fausses présentées 
 - Les **hallucinations** découlent de la nature statistique de la génération de tokens
 ```
 
-!quiz ./intro-llm-quiz.quiz.md
+!import ./intro-llm-quiz.quiz.md

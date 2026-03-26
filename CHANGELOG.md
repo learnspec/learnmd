@@ -7,6 +7,14 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.1] — 2026-03-27
+
+### Changed
+- `!quiz` directive removed — `!import` now auto-detects file type from extension:
+  `.learn.md` → lesson content, `.quiz.md` → interactive quiz checkpoint
+
+---
+
 ## [0.2.0] — 2026-03-26
 
 ### Added

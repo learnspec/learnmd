@@ -4,7 +4,7 @@
 
 LearnMD is the **companion format to QuizMD**: where QuizMD covers assessment (testing what you know), LearnMD covers instruction (explaining what to know). Together they form a complete **teach → assess** stack, all in portable plain-text files.
 
-**A complete learning path — chapters, lessons, exercises, quizzes — can live in a single valid `.learn.md` file.** `!import` and `!quiz` directives are optimization tools for reusability, not prerequisites.
+**A complete learning path — chapters, lessons, exercises, quizzes — can live in a single valid `.learn.md` file.** The `!import` directive is an optimization tool for reusability, not a prerequisite.
 
 | Principle | Description |
 |-----------|-------------|
@@ -12,7 +12,7 @@ LearnMD is the **companion format to QuizMD**: where QuizMD covers assessment (t
 | **Git-native** | Versionable, diffable, and mergeable like code |
 | **AI-native** | Generatable and consumable by LLMs without special tooling |
 | **Progressively enriched** | Plain text (Level 0) up through special fenced blocks (Level 2) |
-| **QuizMD-interoperable** | Inline ` ```quiz ` blocks and `!quiz` directive to embed checkpoints |
+| **QuizMD-interoperable** | Inline ` ```quiz ` blocks and `!import` directive to embed checkpoints |
 
 ---
 
@@ -39,7 +39,7 @@ path (.learn.md, minimal or no frontmatter)
 ```
 
 - Structure is **strictly linear** in v0.2 (no branching)
-- ` ```quiz ` blocks and `!quiz` directives are usable at any level
+- ` ```quiz ` blocks and `!import` directives are usable at any level
 - External content is referenced via native Markdown links `[text](url)` and `![alt](url)`
 
 ---
@@ -55,7 +55,7 @@ path (.learn.md, minimal or no frontmatter)
 | `### Lesson title` | Sub-section heading |
 | `> text` | Generic blockquote or note |
 | `!import ./file.learn.md` | Include another lesson file |
-| `!quiz ./file.quiz.md` | Embed a QuizMD checkpoint from an external file |
+| `!import ./file.quiz.md` | Embed a QuizMD checkpoint from an external file |
 | `$...$` | Inline LaTeX math formula |
 | `$$...$$` | Block (display) LaTeX math formula |
 
@@ -181,7 +181,7 @@ The question starts with `?` followed by the question text. Answer choices use `
 | Need | Syntax |
 |------|--------|
 | Single simple question | Inline ` ```quiz ` block |
-| Multiple questions, advanced scoring, or shared config | `!quiz ./file.quiz.md` directive |
+| Multiple questions, advanced scoring, or shared config | `!import ./file.quiz.md` directive |
 
 ### ` ```example ` — Worked example
 
@@ -218,27 +218,21 @@ A summary or key-takeaways block, typically placed at the end of a lesson or mod
 
 #### `!import <path>`
 
-Includes the content of another `.learn.md` lesson. Supports relative paths.
+Includes content from another file at the current position. The file type is detected from the extension:
+
+- **`.learn.md`** — lesson content is inserted inline (frontmatter ignored)
+- **`.quiz.md`** — renders as an interactive QuizMD checkpoint
 
 ```markdown
 !import ./03-conditions.learn.md
+!import ./check-variables.quiz.md
 ```
 
 Behavior:
 - The imported file's content is inserted at the position of the directive.
-- The imported file's frontmatter is ignored — only its content is included.
+- For `.learn.md`: frontmatter is ignored — only the content is included.
 - Imports are recursive: an imported file may itself contain `!import` directives.
 - Circular imports are silently skipped.
-
-#### `!quiz <path>`
-
-Embeds a QuizMD checkpoint **from an external file** into the lesson flow. Use this for multi-question checkpoints or when the quiz is shared across multiple lessons.
-
-```markdown
-!quiz ./check-variables.quiz.md
-```
-
-For single inline questions, prefer the ` ```quiz ` block syntax instead.
 
 ---
 
@@ -274,7 +268,7 @@ The supported subset is **KaTeX** (see [katex.org/docs/support_table](https://ka
 | Lesson heading | `### Lesson title` | 0 |
 | Generic blockquote | `> text` | 0 |
 | Import lesson | `!import ./file.learn.md` | 0 |
-| Embed quiz checkpoint | `!quiz ./file.quiz.md` | 0 |
+| Embed quiz checkpoint | `!import ./file.quiz.md` | 0 |
 | Inline math | `$formula$` | 0 |
 | Block math | `$$formula$$` | 0 |
 | Frontmatter | `---` YAML `---` | 1 |
@@ -299,7 +293,7 @@ The supported subset is **KaTeX** (see [katex.org/docs/support_table](https://ka
 | Title absent (no H1 and no frontmatter `title`) | Warning |
 | Unclosed fenced block | Error |
 | Inline ` ```quiz ` block with no `?` line | Error |
-| `!quiz` pointing to a missing or invalid path | Warning |
+| `!import` pointing to a `.quiz.md` with no valid questions | Warning |
 | `!import` pointing to a missing file | Warning |
 
 ### Strict mode (`--strict`)
@@ -387,7 +381,7 @@ print(type("hello"))  # <class 'str'>
 
 !import ./03-conditions.learn.md
 
-!quiz ./check-conditions.quiz.md
+!import ./check-conditions.quiz.md
 `````
 
 ---
@@ -403,7 +397,7 @@ LearnMD and QuizMD are complementary formats designed to work together:
 | Core unit | Section / Module | Question |
 | Scoring | Delegated to ` ```quiz ` blocks | Native (points, passing_score) |
 | Sequencing | Linear, modules and lessons | Sequential or all-at-once |
-| Inline other format | ` ```quiz ` + `!quiz` | `!import` for sub-quizzes |
+| Inline other format | ` ```quiz ` + `!import ./file.quiz.md` | `!import` for sub-quizzes |
 | Standalone use | Yes | Yes |
 
 ---
