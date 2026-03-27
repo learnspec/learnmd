@@ -131,6 +131,7 @@ Callouts use GitHub Flavored Markdown syntax and are rendered with visual emphas
 |--------|----------|-------------|
 | `> [!summary]` | Summary | Key takeaways at the end of a lesson |
 | `> [!example]` | Example | Non-code illustrative example |
+| `> [!objectives]` | Learning Objectives | What the learner will be able to do after this lesson — place at the top |
 
 ```markdown
 > [!warning]
@@ -267,6 +268,7 @@ The supported subset is **KaTeX** (see [katex.org/docs/support_table](https://ka
 | Caution callout | `> [!caution]` | 1 |
 | Summary callout | `> [!summary]` | 1 |
 | Example callout | `> [!example]` | 1 |
+| Objectives callout | `> [!objectives]` | 1 |
 | Inline quiz question | ` ```quiz ` | 2 |
 | Scored inline quiz | ` ```quiz scored:true ` | 2 |
 
