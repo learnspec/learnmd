@@ -254,12 +254,43 @@ LearnMD supports **ABC notation** for embedding sheet music inline in lesson con
 
 ### Syntax
 
-Use a fenced code block with the language identifier `abc`:
+Use a fenced code block with the language identifier `abc`, optionally followed by space-separated flags:
+
+```
+```abc [play] [cursor] [colors]
+```
+
+| Flag | Description |
+|------|-------------|
+| *(none)* | Static SVG score only |
+| `play` | Adds audio controls (play, restart, progress bar) |
+| `cursor` | Highlights the current note during playback (requires `play`) |
+| `colors` | Colors each note by pitch class on the chromatic wheel (requires `play`) |
+
+Flags are combinable in any order: ` ```abc play cursor colors `
 
 ````markdown
 ```abc
 X:1
-T:Scale of C major
+T:Scale of C major — static
+M:4/4
+L:1/4
+K:C
+CDEF|GABC|
+```
+
+```abc play
+X:1
+T:Scale of C major — with audio
+M:4/4
+L:1/4
+K:C
+CDEF|GABC|
+```
+
+```abc play cursor colors
+X:1
+T:Scale of C major — fully interactive
 M:4/4
 L:1/4
 K:C
@@ -271,6 +302,7 @@ CDEF|GABC|
 
 - Compatible renderers replace the `abc` block with an inline SVG score.
 - Non-compatible renderers (e.g. GitHub) display the raw ABC text as a code block — the format degrades gracefully.
+- The `play` flag uses the Web Audio API via [abcjs synth](https://www.abcjs.net/api-synth.html); it is loaded lazily only when ABC blocks are present in the document.
 - ABC notation may appear anywhere in lesson prose: body text, callouts, and inside ` ```note ` or ` ```concept ` blocks.
 
 ### Example
@@ -280,7 +312,7 @@ CDEF|GABC|
 
 The C major scale uses only natural notes:
 
-```abc
+```abc play cursor
 X:1
 T:C major scale
 M:4/4
@@ -317,7 +349,8 @@ Notice that the intervals follow the pattern: W W H W W W H.
 | Objectives callout | `> [!objectives]` | 1 |
 | Inline quiz question | ` ```quiz ` | 2 |
 | Scored inline quiz | ` ```quiz scored:true ` | 2 |
-| ABC music notation | ` ```abc ` ABC text ` ``` ` | 0 |
+| ABC (static) | ` ```abc ` ABC text ` ``` ` | 0 |
+| ABC (interactive) | ` ```abc play cursor colors ` ABC text ` ``` ` | 0 |
 
 ---
 
