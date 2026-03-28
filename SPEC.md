@@ -248,6 +248,52 @@ The supported subset is **KaTeX** (see [katex.org/docs/support_table](https://ka
 
 ---
 
+## ABC music notation
+
+LearnMD supports **ABC notation** for embedding sheet music inline in lesson content. Compatible renderers (e.g. neuroneo.md) use [abcjs](https://www.abcjs.net/) to produce SVG output directly in the browser — no server required.
+
+### Syntax
+
+Use a fenced code block with the language identifier `abc`:
+
+````markdown
+```abc
+X:1
+T:Scale of C major
+M:4/4
+L:1/4
+K:C
+CDEF|GABC|
+```
+````
+
+### Rendering
+
+- Compatible renderers replace the `abc` block with an inline SVG score.
+- Non-compatible renderers (e.g. GitHub) display the raw ABC text as a code block — the format degrades gracefully.
+- ABC notation may appear anywhere in lesson prose: body text, callouts, and inside ` ```note ` or ` ```concept ` blocks.
+
+### Example
+
+````markdown
+### Lesson 1 — The major scale
+
+The C major scale uses only natural notes:
+
+```abc
+X:1
+T:C major scale
+M:4/4
+L:1/4
+K:C
+CDEF|GABC|
+```
+
+Notice that the intervals follow the pattern: W W H W W W H.
+````
+
+---
+
 ## Syntax reference table
 
 | Element | Syntax | Level |
@@ -271,6 +317,7 @@ The supported subset is **KaTeX** (see [katex.org/docs/support_table](https://ka
 | Objectives callout | `> [!objectives]` | 1 |
 | Inline quiz question | ` ```quiz ` | 2 |
 | Scored inline quiz | ` ```quiz scored:true ` | 2 |
+| ABC music notation | ` ```abc ` ABC text ` ``` ` | 0 |
 
 ---
 
