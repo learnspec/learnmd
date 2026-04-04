@@ -449,6 +449,69 @@ Subset(A, B)
 - Full language reference: [penrose.cs.cmu.edu](https://penrose.cs.cmu.edu/)
 - Text labels require font files and may not appear in all environments.
 
+
+---
+
+## Mermaid diagrams
+
+LearnMD supports **Mermaid** text-based diagrams via [Mermaid.js](https://mermaid.js.org/). Diagrams can appear anywhere in a lesson document.
+
+> **Note:** Static image embeds (`![](url)`) are **not supported** for security reasons. Mermaid diagrams are defined as text and rendered client-side.
+
+### Syntax
+
+Use a fenced code block with the `mermaid` language identifier:
+
+````markdown
+```mermaid
+flowchart LR
+    A[Start] --> B{Decision}
+    B -- Yes --> C[Action]
+    B -- No --> D[End]
+```
+````
+
+Optional block attributes can follow the language identifier:
+
+````markdown
+```mermaid caption:"System architecture" width:80%
+graph TD
+    Client --> Server
+    Server --> DB
+```
+````
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `caption` | string | Caption displayed below the diagram |
+| `width` | CSS value | Diagram width (e.g. `100%`, `600px`) |
+
+### Supported diagram types
+
+| Type | Keyword | Example use |
+|------|---------|-------------|
+| Flowchart | `flowchart` / `graph` | Process flows, decision trees |
+| Sequence | `sequenceDiagram` | API call flows, interactions |
+| Class | `classDiagram` | OOP relationships, data models |
+| Entity-Relationship | `erDiagram` | Database schemas |
+| Gantt | `gantt` | Project timelines |
+| Mindmap | `mindmap` | Topic hierarchies |
+| Timeline | `timeline` | Historical sequences |
+
+### AI authoring
+
+Mermaid diagram syntax is text-based and AI-generatable. When using MCP tools or Claude, you can ask for diagrams inline:
+
+> "Add a sequence diagram showing how a JWT token is validated."
+
+Claude will emit a valid `` ```mermaid `` block directly in the `.learn.md` file.
+
+### Constraints
+
+- Mermaid is **auto-detected**: the Mermaid runtime is loaded only when a `` ```mermaid `` block is present.
+- Not all Mermaid diagram types are guaranteed in all player environments — `flowchart`, `sequence`, and `classDiagram` have the widest support.
+- Full language reference: [mermaid.js.org](https://mermaid.js.org/)
+
 ---
 
 ## Syntax reference table
@@ -483,6 +546,8 @@ Subset(A, B)
 | Concept block | ` ```concept [id:slug] ` | 2 |
 | ABC (static) | ` ```abc ` ABC text ` ``` ` | 0 |
 | ABC (interactive) | ` ```abc play cursor colors ` ABC text ` ``` ` | 0 |
+| Mermaid diagram | ` ```mermaid ` diagram text ` ``` ` | 0 |
+| Mermaid (with caption) | ` ```mermaid caption:"..." width:80% ` | 0 |
 
 ---
 
