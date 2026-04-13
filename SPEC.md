@@ -459,6 +459,70 @@ When generating Mermaid diagrams:
 
 ---
 
+## TikZ diagrams
+
+LearnMD supports **TikZ** (LaTeX-based vector graphics) via `` ```tikz `` fenced blocks. Diagrams are rendered **server-side** through the Kroki proxy and returned as static SVG — no JavaScript required in the browser.
+
+TikZ is ideal for mathematical diagrams, scientific illustrations, and circuit schematics. Add the `circuitikz` flag for electronic circuits.
+
+### Syntax — Standard TikZ
+
+````markdown
+```tikz caption:"Ohm's Law triangle" width:45%
+\begin{tikzpicture}[scale=1.4]
+  \draw[thick] (0,0) -- (3,0) -- (1.5,2.6) -- cycle;
+  \node[font=\Large\bfseries] at (1.5,1.7) {$V$};
+  \draw[thick] (0.75,0) -- (0.75,1.3);
+  \node[font=\Large\bfseries] at (0.38,0.6) {$I$};
+  \node[font=\Large\bfseries] at (2.1,0.6) {$R$};
+\end{tikzpicture}
+```
+````
+
+### Syntax — CircuitTikZ
+
+Add the `circuitikz` flag to enable circuit drawing components:
+
+````markdown
+```tikz circuitikz caption:"Battery + resistor circuit"
+\begin{circuitikz}[american, scale=1.2]
+  \draw (0,0) to[battery1, l=$V_s$] (0,3)
+              to[short] (3,3)
+              to[R, l=$R$] (3,0)
+              to[short] (0,0);
+\end{circuitikz}
+```
+````
+
+### Attributes
+
+| Attribute | Description | Example |
+|---|---|---|
+| `circuitikz` | Enable CircuitTikZ mode for circuit diagrams | `tikz circuitikz` |
+| `caption:"text"` | Caption displayed below the diagram | `caption:"Force diagram"` |
+| `width:value` | CSS width of the rendered SVG | `width:50%` |
+
+### When to use TikZ
+
+| Domain | Examples |
+|---|---|
+| Mathematics | Geometric proofs, function plots, coordinate systems |
+| Physics | Free-body diagrams, wave patterns, optics |
+| Electronics | Circuit schematics (use `circuitikz`) |
+| Chemistry | Molecular structures, reaction diagrams |
+| Engineering | Mechanical components, flow diagrams |
+
+### Guidelines for authors
+
+- Always declare `\begin{tikzpicture}` … `\end{tikzpicture}` (or `\begin{circuitikz}` … `\end{circuitikz}`).
+- Do not use `\usepackage{}` — packages are pre-loaded server-side.
+- Use `scale=` on the environment for size control rather than `width:` attribute alone.
+- TikZ is verbose — use Mermaid for simple flowcharts and sequence diagrams.
+- Full reference: [tikz.dev](https://tikz.dev/) · CircuitTikZ: [circuitikz.github.io](https://circuitikz.github.io/circuitikz/)
+
+---
+
+
 ## Vega-Lite charts
 
 LearnMD supports **Vega-Lite** declarative JSON charts via `` ```vega-lite `` fenced blocks. Charts render client-side using [vega-embed](https://github.com/vega/vega-embed).
@@ -600,6 +664,8 @@ r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4
 | ABC (interactive) | ` ```abc play cursor colors ` ABC text ` ``` ` | 0 |
 | Mermaid diagram | ` ```mermaid ` diagram text ` ``` ` | 0 |
 | Mermaid (with caption) | ` ```mermaid caption:"..." width:80% ` | 0 |
+| TikZ diagram | ` ```tikz ` LaTeX code ` ``` ` | 0 |
+| TikZ (circuitikz) | ` ```tikz circuitikz caption:"..." ` | 0 |
 | Vega-Lite chart | ` ```vega-lite ` JSON spec ` ``` ` | 0 |
 | Vega-Lite (with attrs) | ` ```vega-lite caption:"..." height:400 theme:vox ` | 0 |
 | Chess position (FEN) | ` ```chess ` FEN string ` ``` ` | 0 |
