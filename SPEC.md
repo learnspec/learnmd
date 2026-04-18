@@ -537,7 +537,7 @@ Vega-Lite is the recommended renderer for statistical data visualization: bar ch
 ````markdown
 ```vega-lite
 {
-  "$schema": "https://vega.github.io/vega-lite/v6.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": "container",
   "mark": {"type": "bar"},
   "data": {
