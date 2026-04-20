@@ -257,6 +257,9 @@ When a code language is present, the block body is rendered as a syntax-highligh
 > [!important]
 > Any content that relies on monospace font and preserved whitespace (ASCII diagrams, trees, aligned tables, box-drawing) must declare a code language, e.g. ` ```example text title:"..." `. A bare ` ```example ` will collapse the layout because the body is parsed as prose.
 
+> [!warning]
+> **Don't draw schemas in ASCII art.** Box-and-arrow diagrams, anatomical schemas, flowcharts, process diagrams, comparisons, etc. must use a real diagram block — `mermaid`, `tikz`, `graphviz`, `plantuml`, or `vega-lite` — *not* ASCII art inside ` ```example text `. ASCII renders inconsistently across devices, is unreadable on mobile, and is not accessible. Reserve ` ```example text ` for content that is inherently monospace (source code output, file trees, aligned tabular data, terminal sessions) — never for illustrations.
+
 **Fenced vs GFM callouts:**
 
 | Feature | GFM callout (`> [!...]`) | Fenced callout (` ```type `) |
