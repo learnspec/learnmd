@@ -2,7 +2,7 @@
 title: "Introduction aux LLMs — Comment fonctionnent les grands modèles de langage ?"
 type: lesson
 lang: fr
-domain: ia
+kind: ia
 level: beginner
 estimated_time: 20min
 tags: [llm, ia, transformer, nlp]
