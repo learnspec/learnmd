@@ -252,7 +252,10 @@ print(score)   # → 42
 ```
 `````
 
-When a code language is present, the block body is rendered as a syntax-highlighted code block inside the callout. When absent, the body is rendered as Markdown prose.
+When a code language is present, the block body is rendered as a syntax-highlighted code block inside the callout. When absent, the body is rendered as Markdown prose — whitespace and line breaks are collapsed.
+
+> [!important]
+> Any content that relies on monospace font and preserved whitespace (ASCII diagrams, trees, aligned tables, box-drawing) must declare a code language, e.g. ` ```example text title:"..." `. A bare ` ```example ` will collapse the layout because the body is parsed as prose.
 
 **Fenced vs GFM callouts:**
 
