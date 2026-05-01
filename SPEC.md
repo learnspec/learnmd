@@ -290,8 +290,8 @@ Includes content from another file at the current position. The file type is det
 Behavior:
 - The imported file's content is inserted at the position of the directive.
 - For `.learn.md`: the file's content is **rendered inline** at the insertion point — the section title appears as a visual divider and in the table of contents. Frontmatter (metadata) is ignored.
-- Imports are recursive: an imported file may itself contain `!import` directives.
-- Circular imports are silently skipped.
+- **Nested imports are not supported.** `!import` directives are only honored when they appear in the **entry file** (the top-level `.learn.md` of a course). An `!import` inside a file that is itself imported is **inert** — renderers and authoring tools must ignore it. Authors must lift every `!import` to the entry file. This applies to both `.learn.md` and `.quiz.md` targets.
+- Circular imports cannot occur because nesting is forbidden.
 
 ---
 
