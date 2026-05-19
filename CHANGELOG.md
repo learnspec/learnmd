@@ -7,6 +7,13 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Added
+- `description` optional frontmatter field — short plain-text summary (typically 1–3 sentences) for catalogues, link previews, and `<meta name="description">`. Backward-compatible: existing files remain valid; no `spec_version` bump.
+
+---
+
 ## [0.2.2] — 2026-03-27
 
 ### Changed

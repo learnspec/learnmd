@@ -92,6 +92,8 @@ A YAML block at the top of the `.learn.md` file, between two `---` lines.
 ---
 title: Python Variables       # optional — inferred from the first # H1 if absent
 lang: en                      # REQUIRED — BCP-47 code (en, fr, en-US, …)
+description: "Names, assignment, and basic types in Python — for learners with no prior programming experience."
+                              # optional — short summary for catalogues, previews, and meta tags
 estimated_time: 15min         # optional — free-form duration string
 tags: [python, variables]     # optional — list of strings
 author: Jane Smith            # optional — string or {name, email, url}
@@ -104,6 +106,7 @@ author: Jane Smith            # optional — string or {name, email, url}
 |-------|----------|------|-------------|
 | `title` | No | string | Overrides the first `# H1`. Inferred from H1 if absent. |
 | `lang` | **Yes** | BCP-47 | Language code: `en`, `fr`, `en-US`, etc. |
+| `description` | No | string | Short plain-text summary (typically 1–3 sentences) — used for catalogues, link previews, and `<meta name="description">`. Distinct from `title` and from the body content. |
 | `estimated_time` | No | string | Free-form estimated reading/study time: `15min`, `1h30`, `2h` |
 | `tags` | No | string[] | Thematic tags |
 | `author` | No | string or object | Author name, or `{name, email, url}` |
@@ -713,6 +716,7 @@ Strict mode is recommended for CI pipelines and production publishing. Lenient m
 ---
 title: Introduction to Python
 lang: en
+description: "A guided tour of Python basics, from variables to list manipulation — for absolute beginners."
 estimated_time: 2h
 tags: [python, programming, beginner]
 ---
