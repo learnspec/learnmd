@@ -18,6 +18,7 @@ LearnMD becomes part of the broader **LearnSpec** suite. Many additions align wi
 - `media:slug` image syntax with mandatory fallback URL — resolves to MediaMD entries
 - `!checkpoint` directive with `id`, `label`, `type`, `badge` attributes
 - Frontmatter fields: `created`, `updated`, `license` (SPDX), `spec_version` — universal LearnSpec fields
+- `description` optional frontmatter field — short plain-text summary (typically 1–3 sentences) for catalogues, link previews, and `<meta name="description">`. Backward-compatible: existing files remain valid; no `spec_version` bump.
 - Fenced callout blocks `\`\`\`note`, `\`\`\`tip`, `\`\`\`warning`, `\`\`\`important`, `\`\`\`caution`, `\`\`\`summary`, `\`\`\`example`, `\`\`\`objectives` as Level 2 alternatives to GFM callouts
 - `> [!objectives]` GFM callout for learning objectives
 

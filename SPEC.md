@@ -104,6 +104,7 @@ A YAML block at the top of the `.learn.md` file, between two `---` lines.
 ```yaml
 ---
 title: Python — Variables      # optional — inferred from the first # H1 if absent
+description: "Names, assignment, and basic types in Python — for learners with no prior programming experience."
 lang: en                       # REQUIRED — BCP-47 code (en, fr, en-US, …)
 estimated_time: 15min          # optional — free-form duration string
 tags: [python, variables]      # optional — list of strings
@@ -121,6 +122,7 @@ license: CC-BY-4.0             # optional — SPDX identifier or "custom"
 |---|---|---|---|
 | `title` | No | string | Overrides the first `# H1`. Inferred from H1 if absent. |
 | `lang` | **Yes** | BCP-47 | Language code: `en`, `fr`, `en-US`, etc. |
+| `description` | No | string | Short plain-text summary (typically 1–3 sentences) — used for catalogues, link previews, and `<meta name="description">`. Distinct from `title` and from the body content. |
 | `estimated_time` | No | string | Free-form estimated reading/study time: `15min`, `1h30`, `2h` |
 | `tags` | No | string[] | Thematic tags |
 | `author` | No | string or object | Author name, or `{name, email, url}` |
@@ -417,17 +419,82 @@ Strict mode is recommended for CI pipelines and production publishing. Lenient m
 
 ---
 
-## Changes from v0.3
+## Complete example — single-file path
 
-| Element | Change |
-|---|---|
-| Hierarchy | `path` renamed to `document` (avoids confusion with TrackMD) |
-| Principles | "QuizMD-interoperable" → "LearnSpec-interoperable" |
-| `!import` | Added `.diagram.md` support |
-| `!ref` | New directive — declares MediaMD and GlossaryMD contexts |
-| Images | New `media:slug` syntax via MediaMD |
-| Frontmatter | Added `created`, `updated`, `license` (universal LearnSpec fields) |
-| Diagrams | Mermaid and ABC sections simplified — delegate to DiagramMD spec |
+`````markdown
+---
+title: Introduction to Python
+lang: en
+description: "A guided tour of Python basics, from variables to list manipulation — for absolute beginners."
+estimated_time: 2h
+tags: [python, programming, beginner]
+---
+
+# Introduction to Python
+
+A guided tour of Python basics, from variables to list manipulation.
+
+## Module 1 — Variables
+
+### Lesson 1 — Declaring a variable
+
+A variable is a named reference to a value in memory.
+
+```python
+age = 25
+name = "Alice"
+```
+
+> [!tip]
+> Use descriptive names: `student_count` is clearer than `n`.
+
+> [!warning]
+> Variable names are case-sensitive: `Age` and `age` are two different variables.
+
+```quiz
+? Which syntax is valid Python?
+- [x] age = 25
+- [ ] int age = 25
+- [ ] var age = 25
+```
+
+### Lesson 2 — Basic types
+
+Python infers types automatically — no type declarations needed.
+
+```python
+age = 25        # int
+pi = 3.14       # float
+name = "Alice"  # str
+active = True   # bool
+```
+
+```python
+# Inspecting types
+print(type(25))       # <class 'int'>
+print(type(3.14))     # <class 'float'>
+print(type("hello"))  # <class 'str'>
+```
+
+```quiz scored:true
+? What is the type of `42` in Python?
+- [x] int
+- [ ] float
+- [ ] str
+```
+
+> [!summary]
+> - A variable associates a name with a value
+> - Python infers types dynamically — no declaration required
+> - Use `type()` to inspect the type of any object
+> - Names are case-sensitive: `Age` ≠ `age`
+
+## Module 2 — Conditions
+
+!import ./03-conditions.learn.md
+
+!import ./check-conditions.quiz.md
+`````
 
 ---
 
