@@ -7,10 +7,30 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased]
+## [0.4.0] — 2026-05-10
+
+### Context
+LearnMD becomes part of the broader **LearnSpec** suite. Many additions align with universal LearnSpec conventions defined in the [Architecture Charter](https://github.com/learnspec/.github/blob/main/profile/README.md).
 
 ### Added
+- `!ref` directive — declares a MediaMD or GlossaryMD context without inline rendering
+- `!import` now supports `.diagram.md` files (DiagramMD reusable diagram bundles)
+- `media:slug` image syntax with mandatory fallback URL — resolves to MediaMD entries
+- `!checkpoint` directive with `id`, `label`, `type`, `badge` attributes
+- Frontmatter fields: `created`, `updated`, `license` (SPDX), `spec_version` — universal LearnSpec fields
 - `description` optional frontmatter field — short plain-text summary (typically 1–3 sentences) for catalogues, link previews, and `<meta name="description">`. Backward-compatible: existing files remain valid; no `spec_version` bump.
+- Fenced callout blocks `\`\`\`note`, `\`\`\`tip`, `\`\`\`warning`, `\`\`\`important`, `\`\`\`caution`, `\`\`\`summary`, `\`\`\`example`, `\`\`\`objectives` as Level 2 alternatives to GFM callouts
+- `> [!objectives]` GFM callout for learning objectives
+
+### Changed
+- `lang` frontmatter field promoted from optional to **required** (warning in lenient mode, error in strict)
+- Internal tier renamed `path` → `document` to avoid confusion with TrackMD
+- Diagram syntax documentation delegated to the new [DiagramMD spec](https://github.com/learnspec/diagrammd) — Mermaid and ABC sections simplified
+- Principle wording: "QuizMD-interoperable" → "LearnSpec-interoperable"
+
+### Breaking
+- `lang` is now required (lenient: warning; strict: error)
+- Tier name `path` → `document` (affects parser output)
 
 ---
 
