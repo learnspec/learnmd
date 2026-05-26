@@ -333,7 +333,7 @@ Images are referenced via two mechanisms:
 
 ### Via MediaMD (recommended)
 
-Requires a `!ref` to a MediaMD file at the top of the document. Enables automatic licence and attribution resolution.
+Requires a `!ref` to a MediaMD file at the top of the document, **unless** the slug is resolved via the collection's `stock.media.md` default-reference convention (see *MediaMD §Default Reference Convention*). Enables automatic licence and attribution resolution.
 
 ```markdown
 !ref ./media-biology.media.md
@@ -343,6 +343,8 @@ Requires a `!ref` to a MediaMD file at the top of the document. Enables automati
 
 - `media:chloroplast`: slug resolved via the MediaMD → full-resolution image + licence metadata
 - `"https://..."`: fallback URL — displayed in standard readers without LearnSpec
+
+> **Default reference**: when a `stock.media.md` exists at the collection root, no explicit `!ref` is required — every file in the collection resolves `media:slug` against that registry by default. Reserve `!ref` for *additional* MediaMD catalogues.
 
 ### Direct (URL)
 
