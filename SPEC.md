@@ -63,9 +63,10 @@ document (.learn.md, minimal or no frontmatter)
 | `> text` | Generic blockquote |
 | `!import ./file.learn.md` | Include another lesson file |
 | `!import ./file.quiz.md` | Embed an external QuizMD checkpoint |
-| `!import ./file.diagram.md` | Embed one or more DiagramMD diagram blocks |
+| `!ref ./file.diagram.md` | Declare a DiagramMD context (enables ` ```diagram ref:slug ` resolution) |
 | `!ref ./file.media.md` | Declare a MediaMD context (enables `media:slug` resolution) |
 | `!ref ./file.glossary.md` | Declare a GlossaryMD context (enables term highlighting) |
+| ` ```diagram ref:slug ` | Render a named diagram from a `!ref`-ed DiagramMD file |
 | `!checkpoint id:slug` | Mark a learner progress checkpoint |
 | `$...$` | Inline LaTeX math formula |
 | `$$...$$` | Block (display) LaTeX math formula |
@@ -167,12 +168,12 @@ Includes content from another file at the current position. The file type is det
 |---|---|
 | `.learn.md` | Lesson content inserted inline (frontmatter ignored) |
 | `.quiz.md` | Rendered as an interactive QuizMD checkpoint |
-| `.diagram.md` | All diagram blocks in the file are inserted |
+
+DiagramMD files (`.diagram.md`) are not consumed via `!import` — they are leaf catalogues declared with `!ref` and addressed by slug. See `!ref` below.
 
 ```markdown
 !import ./03-conditions.learn.md
 !import ./check-variables.quiz.md
-!import ./diagrams-python.diagram.md
 ```
 
 - Imports are recursive (an imported file may itself contain `!import` directives)
@@ -185,6 +186,7 @@ Declares a context file without including its content inline. Produces no visibl
 
 | Extension | Behaviour |
 |---|---|
+| `.diagram.md` | Enables ` ```diagram ref:slug ` named-diagram resolution |
 | `.media.md` | Enables `media:slug` reference resolution |
 | `.glossary.md` | Enables defined-term highlighting |
 
@@ -323,7 +325,20 @@ K:C
 
 Supported types, shared attributes (`caption`, `width`, `alt`), and AI authoring recommendations are documented in the [DiagramMD spec](./diagrammd-spec.md).
 
-For diagrams reused across multiple lessons, use a `.diagram.md` file imported via `!import`.
+### Reuse by Reference
+
+For diagrams reused across multiple lessons, gather them in a `.diagram.md` catalogue declared via `!ref ./file.diagram.md` and reference each named diagram inline with a ` ```diagram ref:slug ` block:
+
+````markdown
+!ref ./diagrams-python.diagram.md
+
+```diagram ref:auth-flow
+```
+````
+
+- `ref:slug` resolves the named diagram from any `!ref`-ed DiagramMD catalogue — the catalogue is a leaf addressed by slug, never inlined via `!import`.
+- The optional Level 2 attributes (`caption`, `width`, `alt`) may accompany `ref:` to override the catalogue defaults at the point of use.
+- When a `stock.diagram.md` exists at the collection root, `ref:slug` resolves against it by default — no explicit `!ref` is required (mirrors the MediaMD default-reference convention). Reserve `!ref` for *additional* DiagramMD catalogues.
 
 ---
 
@@ -364,7 +379,8 @@ Requires a `!ref` to a MediaMD file at the top of the document, **unless** the s
 | Generic blockquote | `> text` | 0 |
 | Import lesson | `!import ./file.learn.md` | 0 |
 | Embed quiz | `!import ./file.quiz.md` | 0 |
-| Embed diagrams | `!import ./file.diagram.md` | 0 |
+| Declare DiagramMD | `!ref ./file.diagram.md` | 0 |
+| Reference a diagram | ` ```diagram ref:slug ` | 0 |
 | Declare MediaMD | `!ref ./file.media.md` | 0 |
 | Declare GlossaryMD | `!ref ./file.glossary.md` | 0 |
 | Progress checkpoint | `!checkpoint id:slug [label:"..."] [type:...] [badge:...]` | 0 |

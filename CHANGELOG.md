@@ -13,8 +13,8 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 LearnMD becomes part of the broader **LearnSpec** suite. Many additions align with universal LearnSpec conventions defined in the [Architecture Charter](https://github.com/learnspec/.github/blob/main/profile/README.md).
 
 ### Added
-- `!ref` directive — declares a MediaMD or GlossaryMD context without inline rendering
-- `!import` now supports `.diagram.md` files (DiagramMD reusable diagram bundles)
+- `!ref` directive — declares a DiagramMD, MediaMD or GlossaryMD context without inline rendering
+- ` ```diagram ref:slug ` block — resolves a named diagram from a `!ref`-ed DiagramMD catalogue (leaf addressed by slug); honours `stock.diagram.md` default-reference convention. Replaces `!import` of `.diagram.md` files.
 - `media:slug` image syntax with mandatory fallback URL — resolves to MediaMD entries
 - `!checkpoint` directive with `id`, `label`, `type`, `badge` attributes
 - Frontmatter fields: `created`, `updated`, `license` (SPDX), `spec_version` — universal LearnSpec fields
