@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/neuroneo-md/learnmd/schema/learnmd.schema.json",
+  "$id": "https://github.com/learnspec/learnmd/schema/learnmd.schema.json",
   "title": "LearnMD Frontmatter",
   "description": "JSON Schema for the YAML frontmatter of a .learn.md file (Level 1).",
   "type": "object",
