@@ -44,7 +44,7 @@ name = "Alice"
 ## Key features
 
 - **Instruction-first** — explain concepts, walk through examples, guide learners step by step
-- **Inline checkpoints** — embed knowledge checks directly via ` ```quiz ` blocks (delegated to [QuizMD](https://github.com/neuroneo-md/quizmd))
+- **Inline checkpoints** — embed knowledge checks directly via ` ```quiz ` blocks (delegated to [QuizMD](https://github.com/learnspec/quizmd))
 - **Progressive levels** — plain `.learn.md` works anywhere; frontmatter adds metadata; special blocks add rich UI
 - **Math support** — LaTeX via KaTeX, auto-detected
 - **AI-native** — designed to be generated and validated by AI assistants via MCP
@@ -69,7 +69,7 @@ See [SPEC.md](./SPEC.md) for the full format specification.
 
 | Project | Type | Link |
 |---------|------|------|
-| neuroneo.md | Web player + API + MCP server | [neuroneo.md](https://www.neuroneo.md) |
+| memoneo | Web player + API + MCP server | [memoneo.app](https://memoneo.app) |
 
 > Built an implementation? Open a PR to add it here.
 
@@ -106,6 +106,10 @@ learnmd/
 | BadgeMD: micro-credentials | [learnspec/badgemd](https://github.com/learnspec/badgemd) |
 | CertMD: macro-credentials | [learnspec/certmd](https://github.com/learnspec/certmd) |
 | ListenMD: speech-only episode scripts | [learnspec/listenmd](https://github.com/learnspec/listenmd) |
+
+## Maintainers
+
+This repository is part of the [LearnSpec](https://learnspec.org) suite, initiated and maintained by [memoneo](https://memoneo.app). Issues and pull requests are welcome.
 
 ## License
 

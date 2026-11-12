@@ -5,7 +5,7 @@ Thank you for your interest in improving the LearnMD specification.
 ## Ways to contribute
 
 ### Report an ambiguity or bug in the spec
-Open a [GitHub Issue](https://github.com/neuroneo-md/learnmd/issues) describing:
+Open a [GitHub Issue](https://github.com/learnspec/learnmd/issues) describing:
 - The section of the spec that is unclear or incorrect
 - Your interpretation and the alternative interpretation
 - A concrete `.learn.md` example that demonstrates the ambiguity
@@ -19,7 +19,7 @@ Open an issue with the label `proposal` and describe:
 
 Proposals are discussed openly. A feature is added to the spec once:
 1. There is clear consensus on the syntax
-2. At least one implementation (e.g. neuroneo.md) has validated it in practice
+2. At least one implementation (e.g. memoneo) has validated it in practice
 3. Sample files and tests are provided
 
 ### Add a sample file
@@ -34,7 +34,7 @@ Edit `README.md` to add your parser, player, or tooling to the implementations t
 
 ## Relationship with QuizMD
 
-LearnMD depends on [QuizMD](https://github.com/neuroneo-md/quizmd) for inline quiz checkpoints. Changes to the ` ```quiz ` inline block syntax should be coordinated between both repos.
+LearnMD depends on [QuizMD](https://github.com/learnspec/quizmd) for inline quiz checkpoints. Changes to the ` ```quiz ` inline block syntax should be coordinated between both repos.
 
 ## Versioning
 
