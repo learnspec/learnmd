@@ -136,7 +136,7 @@ license: CC-BY-4.0             # optional — SPDX identifier or "custom"
 
 Callouts use GitHub Flavored Markdown syntax and are rendered with visual emphasis by compatible players.
 
-**Supported everywhere** (GitHub, Obsidian, neuroneo.md):
+**Supported everywhere** (GitHub, Obsidian, memoneo):
 
 | Syntax | Semantic | Typical use |
 |---|---|---|
@@ -146,7 +146,7 @@ Callouts use GitHub Flavored Markdown syntax and are rendered with visual emphas
 | `> [!important]` | Important | Critical point to remember |
 | `> [!caution]` | Caution | Risk of error or data loss |
 
-**Supported on Obsidian and neuroneo.md** (degrade gracefully to a blockquote on GitHub):
+**Supported on Obsidian and memoneo** (degrade gracefully to a blockquote on GitHub):
 
 | Syntax | Semantic | Typical use |
 |---|---|---|
@@ -193,7 +193,7 @@ Declares a context file without including its content inline. Produces no visibl
 ```markdown
 !ref ./media-python.media.md
 !ref ./glossary-python.glossary.md
-!ref https://github.com/neuroneo/commons/blob/main/glossaries/en/computing.glossary.md
+!ref https://github.com/memoneoapp/commons/blob/main/glossaries/en/computing.glossary.md
 ```
 
 Multiple `!ref` directives may coexist in the same document.
